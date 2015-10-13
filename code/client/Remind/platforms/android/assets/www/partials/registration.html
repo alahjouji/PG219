@@ -1,0 +1,80 @@
+<!--
+    HEADER
+-->
+<header class="bar bar-nav">
+	<h1 class="title">Connexion</h1>
+</header>
+
+<div class="content">
+
+	<div class="content-padded">
+
+    	<div class="container-fluid">
+
+            <div class="card-connexion">
+
+
+<!--
+FORMULAIRE DE CONNEXION / INSCRIPTION
+-->
+                <input type="text" 
+                    placeholder="Mon email" 
+                    ng-model="userMail"
+                    class="form-control"/>
+
+                <input type="password" 
+                    placeholder="Mon mot de passe"
+                    ng-model="userPass"
+                    class="form-control"/>
+
+                <input type="password" 
+                    placeholder="Confirmer le mot de passe" 
+                    ng-model="userPass2"
+                    ng-hide="isAlreadyAMembre"
+                    class="form-control"/>
+   
+<!--
+    ACTIONS DE CONNEXION / INSCRIPTION
+-->
+
+                <span class="btn btn-positive btn-block" 
+                    ng-click="checkingMembre()"
+                    ng-show="isAlreadyAMembre">
+                    Se connecter
+                </span>
+
+                <span class="btn btn-primary btn-block" 
+                    ng-click="createAnAcount()"
+                    ng-show="isAlreadyAMembre">
+                    Créer un compte
+                </span>
+
+                <span class="btn btn-positive btn-block"
+                    ng-hide="isAlreadyAMembre"
+                    ng-click="addAMembre()">
+                    Valider
+                </span>
+
+                <span class="btn btn-negative btn-block" 
+                    ng-click="cancel()"
+                    ng-hide="isAlreadyAMembre">
+                    Annuler
+                </span>
+
+<!--
+    MESSAGE D'ERREUR
+-->
+
+                <div class="error"
+                    ng-show="existError" 
+                    id="errorMessage">
+                    {{error}}
+                </div>
+
+    		</div>
+       
+		</div>
+	
+	</div>
+
+</div>

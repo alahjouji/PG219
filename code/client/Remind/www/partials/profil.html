@@ -1,0 +1,144 @@
+<!--
+    HEADER
+-->
+<header class="bar bar-nav">
+    
+    <a class="icon pull-left" 
+        href="#/todos/{{user}}?state=encours">
+        <img src="css/glyphicons/glyphicons-225-chevron-left.png">
+    </a>
+    
+    <h1 class="title">Mon Profil</h1>
+</header>
+
+<div class="content">
+
+    <div class="content-padded">
+
+        <div class="container-fluid">
+
+            <div class="connexion-form">
+
+<!--
+    INFORMATIONS GENERALES
+-->
+
+                <div class="card">
+
+                    <div class = "title-card">
+                        Général
+                    </div>
+
+                    <div class="input-group">
+
+                        <div class="rowy">
+                            <label>Mail</label>
+                            <label>{{user}}</label>
+                        </div>
+
+                        <div class="rowy">
+                            <label>Membre depuis</label>
+                            <label>{{userSubmission}}</label>
+                        </div>
+                    
+
+<!--
+    MODIFICATION DU MOT DE PASSE
+-->
+                        <div ng-show="editingPass">    
+                            <div class="rowy">
+                                <label>Ancien pass</label>
+                                <input type="password" 
+                                    placeholder="Ancien pass" 
+                                    ng-model="mdp1"/>
+                            </div> 
+
+                            <div class="rowy">
+                                <label>Nouveau pass</label>
+                                <input type="password" 
+                                    placeholder="Nouveau pass" 
+                                    ng-model="mdp2"/>
+                            </div> 
+
+                            <div class="rowy">
+                                <label>Confirmer pass</label>
+                                <input type="password" 
+                                    placeholder="Confirmer pass" 
+                                    ng-model="mdp3"/>
+                            </div>
+                        </div>
+
+                    </div>
+
+<!--
+    ACTION SUR LE MOT DE PASSE
+-->
+                    <div class="bar-profile-action">
+                        
+                        <span class="btn btn-primary" 
+                            ng-click="editPass()"
+                            ng-hide="editingPass">
+                            Modifier mon mot de passe
+                        </span>
+
+
+                        <span class="btn btn-negative"
+                            ng-click="cancel()"
+                            ng-show="editingPass">
+                            Annuler
+                        </span>
+
+                        <span class="btn btn-positive" 
+                            ng-click="sendNewPass()"
+                            ng-show="editingPass">
+                            Valider
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+<!--
+    INFORMATIONS TODOS
+-->
+
+            <div class="card">
+
+                <div class = "title-card">
+                    Todos
+                </div>
+
+                <div class="input-group">
+
+                    <div class="rowy">
+                        <label>Todos en cours</label>
+                        <label>{{todoEnCours}}</label>
+                    </div>
+
+                    <div class="rowy">
+                        <label>Todos efféctués</label>
+                        <label>{{todoFinish}}</label>
+                    </div>
+
+                    <div class="rowy">
+                        <label>Depuis l'inscription</label>
+                        <label>{{totalTodos}}</label>
+                    </div>
+
+                </div>  
+
+            </div>
+
+<!--
+    ALERTES
+-->
+            <alert id="myalert" type="{{alertType}}" ng-show="alert">{{alertMsg}}</alert>
+
+        </div>
+    
+    </div>
+
+</div>

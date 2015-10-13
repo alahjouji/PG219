@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>API REST Remind</title>
+    <style>
+      td
+      {
+          border:1px solid black
+      }
+      span{
+        font-size: large
+      }
+    </style>
+  </head>
+  <body>
+<p><span style="font-size: x-large;"><strong>JSONMembre : op&eacute;rations sur les membres</strong></span></p>
+<table style="height: 470px;" border="0" width="1293" align="center">
+<tbody>
+<tr>
+<td><span>Requ&ecirc;te:</span></td>
+<td><span >Chemin:</span></td>
+<td><span >Description:</span></td>
+<td><span >Retour de l'op&eacute;ration:</span></td>
+</tr>
+<tr>
+<td>
+<ul>
+<li><span >POST</span><br /></li>
+</ul>
+</td>
+<td><span >/membre</span></td>
+<td><span >Ajouter un nouveau membre</span></td>
+<td><span >{"_id": "5544dafe84ae0b200879ea24",<br />"id": "5544dafe84ae0b200879ea23",<br />"mail": "d@d.fr",<br />"pass": "8277e0910d750195b448797616e091ad",<br />"totalTodos": 0,<br />"creationDate": "2/5/2015"}</span></td>
+</tr>
+<tr>
+<td>
+<ul>
+<li><span >PUT<br /></span></li>
+</ul>
+</td>
+<td><span >/membre/{membreId}</span></td>
+<td><span >Modifier le mot de passe d'un membre ou le nombre total de ses todos à partir de son id</span></td>
+<td><span >{"_id": "5544dafe84ae0b200879ea24",<br />"id": "5544dafe84ae0b200879ea23",<br />"mail": "d@d.fr",<br />"pass": "8277e0910d750195b448797616e091ad",<br />"totalTodos": 4,<br />"creationDate": "2/5/2015"}</span></td>
+</tr>
+<tr>
+<td>
+<ul>
+<li><span >POST<br /></span></li>
+</ul>
+</td>
+<td><span >/membre/checking</span></td>
+<td><span >v&eacute;rifier l'existence d'un membre et/ou la validit&eacute; de son mot de passe</span></td>
+<td><span >{"checked": true,<br />"exist": true}</span></td>
+</tr>
+<tr>
+<td>
+<ul>
+<li><span >GET<br /></span></li>
+</ul>
+</td>
+<td><span >/membre/{membreId}</span></td>
+<td><span >r&eacute;cupérer un membre à partir de son mail</span></td>
+<td><span >{"_id": "5544dafe84ae0b200879ea24",<br />"id": "5544dafe84ae0b200879ea23",<br />"mail": "d@d.fr",<br />"pass": "8277e0910d750195b448797616e091ad",<br />"totalTodos": 4,<br />"creationDate": "2/5/2015"}</span></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="font-size: x-large;"><strong>JSONTodo : op&eacute;rations sur les todos</strong></span></p>
+<table style="height: 1364px;" border="0" width="1271" align="center">
+<tbody>
+<tr>
+<td><span >Requ&ecirc;te:</span></td>
+<td><span >Chemin:</span></td>
+<td><span >Description:</span></td>
+<td><span >Retour de l'op&eacute;ration:</span></td>
+</tr>
+<tr>
+<td>
+<ul>
+<li><span >POST<br /></span></li>
+</ul>
+</td>
+<td><span>/todo</span></td>
+<td><span>Ajouter un nouveau todo</span></td>
+<td><span >{"_id": "5544dcb584ae0b200879ea32",<br />"id": "5544dcb584ae0b200879ea31",<br /><span >"title": "Projet s8",<br />"description": "D&eacute;tection des incidents",</span></span><span><br />"deadline": "1431094680000",<br />"owner": "d@d.fr",<br />"state": "En cours",<br />"category": "Autre"}</span><span ></span></td>
+</tr>
+<tr>
+<td>
+<ul>
+<li><span >GET<br /></span></li>
+</ul>
+</td>
+<td><span>/todo/{user}/{todoId}</span></td>
+<td><span >R&eacute;cup&eacute;rer un todo par son propri&eacute;taire et son id</span></td>
+<td><span >{"_id": "5544dcb584ae0b200879ea32",<br />"id": "5544dcb584ae0b200879ea31",<br /><span >"title": "Projet s8",<br />"description": "D&eacute;tection des incidents",</span><br />"deadline": "1431094680000",<br />"owner": "d@d.fr",<br />"state": "En cours",<br />"category": "Autre"}</span></td>
+</tr>
+<tr>
+<td>
+<ul>
+<li><span >PUT<br /></span></li>
+</ul>
+</td>
+<td><span >/todo/{id}</span></td>
+<td><span >Modifier un todo par son id</span></td>
+<td><span >{"_id": "5544dcb584ae0b200879ea32",<br />"id": "5544dcb584ae0b200879ea31",<br /><span >"title": "Projet s8",<br />"description": "D&eacute;tection des incidents",</span><br />"deadline": "1431094680000",<br />"owner": "d@d.fr",<br />"state": "En cours",<br />"category": "Autre"}</span></td>
+</tr>
+<tr>
+<td>
+<ul>
+<li><span >DELETE<br /></span></li>
+</ul>
+</td>
+<td><span >/todo/{id}</span></td>
+<td><span >Supprimer un todo par son id</span></td>
+<td><span >{"_id": "5544dcb584ae0b200879ea32",<br />"id": "5544dcb584ae0b200879ea31",<br /><span >"title": "Projet s8",<br />"description": "D&eacute;tection des incidents",</span><br />"deadline": "1431094680000",<br />"owner": "d@d.fr",<br />"state": "En cours",<br />"category": "Autre"}</span></td>
+</tr>
+<tr>
+<td>
+<ul>
+<li><span >GET<br /></span></li>
+</ul>
+</td>
+<td><span >/todo/{user}?state={state}&amp;category={category}</span></td>
+<td><span >R&eacute;cup&eacute;rer les todos d'un membre selon un &eacute;tat et une cat&eacute;gorie</span></td>
+<td>
+<p><span >Si state=="" et category=="":<br /></span></p>
+<p><span >[<br />{"_id": "5544dcb584ae0b200879ea32",<br />"id": "5544dcb584ae0b200879ea31",<br /><span >"title": "Projet s8",<br />"description": "D&eacute;tection des incidents",</span><br />"deadline": "1431094680000",<br />"owner": "d@d.fr",<br />"state": "En cours",<br />"category": "Autre"},<br />{"_id": "5544dccf84ae0b200879ea36",<br />"id": "5544dccf84ae0b200879ea35",<br />"title": "Projet PG219",<br />"description": "Gestion des sessions",<br />"deadline": "1432131480000",<br />"owner": "d@d.fr",<br />"state": "Effectu&eacute;",<br />"category": "Travail"},<br />{"_id": "5544ee2784ae0b200879ea48",<br />"id": "5544ee2784ae0b200879ea47",<br />"title": "T&acirc;che1",<br />"description": "Description de la t&acirc;che 1",<br />"deadline": null,<br />"owner": "d@d.fr",<br />"state": "En cours",<br />"category": "Loisir"}]</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+  </body>
+</html>

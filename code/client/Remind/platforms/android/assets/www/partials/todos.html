@@ -1,0 +1,172 @@
+<!--
+    HEADER
+-->
+<header class="bar bar-nav">
+
+<a class="icon pull-left"
+    href="#/profil/{{user}}"> 
+    <img src="css/glyphicons/glyphicons-4-user.png"> 
+  </a>
+  
+  <a class="icon pull-right"
+    ng-click="logout()"> 
+    <img src="css/glyphicons/glyphicons-389-exit.png"> 
+  </a>
+
+  <h1 class="title">
+    Mes Todos 
+    
+    <span class="badge"> 
+      {{nums.length}} 
+    </span>
+  
+  </h1>
+
+</header>
+
+<div class="content">
+
+  <div class="content-padded">
+
+    <div class="container-fluid">
+
+<!--
+    POUR AJOUTER UN TODO
+--> 
+      <div ng-show="addATask">
+        <a href="#/todos/{{user}}/new">
+
+          <button class="btn btn-primary btn-block"
+          href="#/todos/{{user}}/{{num.id}}">
+              
+            <span class="icon icon-compose"/>
+            Ajouter une tâche
+          </button>
+
+        </a>
+      </div>
+
+<!--
+    POUR FILTRER SELON CATEGORIE
+-->
+      <p><p>
+      <div class="filter">
+        <table style="width:100%;padding: 25px; margin: 0 auto; font-family:'Open Sans', 'Helvetica', 'Arial';">
+          <tr>
+            <td>
+              <button class="btn btn-primary"
+                  ng-click="filterAll()"
+                  id="filter-all">
+                  TOUS
+              </button>
+            </td>
+            <td>
+              <button class="btn"
+                  ng-click="filterWork()"
+                  id="filter-work">
+                  TRAVAIL
+              </button>
+            </td>
+            <td>
+              <button class="btn"
+                  ng-click="filterFun()"
+                  id="filter-fun">
+                  LOISIR
+              </button>
+            </td>
+            <td>
+              <button class="btn"
+                  ng-click="filterOther()"
+                  id="filter-other">
+                  AUTRE
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+            
+<!--
+    PERMET DE FAIRE LE TRI
+-->
+
+      <table style="width:100%;padding: 25px; margin: 0 auto; font-family:'Open Sans', 'Helvetica', 'Arial';">
+        <tr>
+          <td>
+            Trier par :
+          </td>
+          <td>
+            <button class="btn btn-primary"
+                ng-click="sort(orderProp)"
+                id="sortByTitle">
+                TITRE
+            </button>
+          </td>
+          <td>
+            <button class="btn"
+                ng-click="sort(orderProp)"
+                id="sortByDeadline">
+                DEADLINE
+            </button>
+          </td>
+        </tr>
+      </table>
+
+<!--
+    AFFICHAGE DES TODOS
+-->
+
+      <div class="card">
+
+        <ul class="table-view">
+
+          <li class="table-view-cell2 media padding-cell saumon"
+              ng-repeat="num in nums | orderBy : orderProp | filter : category">
+
+            <a>
+              <span class="{{num.state | state}}" 
+                name="checkbox"
+                ng-click="check(num, $index, this)"/>
+            </a>
+
+            <a href="#/todos/{{user}}/{{num.id}}">
+            
+              <div class="media-body">
+                {{num.title}}
+              </div>
+            
+            </a>
+    
+          </li>
+      
+        </ul>
+      
+      </div>
+    
+    </div>
+
+  </div>
+
+<!--
+    FOOTER
+-->
+
+  <nav class="bar bar-tab">
+    <a class="tab-item" 
+        href="#/todos/{{user}}?state=encours"
+        id="tabEnCours"> 
+      Tâches en cours 
+    </a> 
+    <a class="tab-item" 
+        href="#/todos/{{user}}?state=finish"
+        id="tabFinish"> 
+      Tâches effectuées 
+    </a> 
+    <a class="tab-item" 
+        href="#/todos/{{user}}?state=all"
+        id="tabAll">
+      Toutes les tâches 
+    </a>
+  </nav>
+
+</div>

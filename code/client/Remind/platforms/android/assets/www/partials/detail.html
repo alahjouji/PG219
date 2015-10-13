@@ -1,0 +1,268 @@
+<!--
+    HEADER
+-->
+<header class="bar bar-nav">
+  
+    <a class="icon pull-left" 
+        href="#/todos/{{user}}?state=encours">
+        <img src="css/glyphicons/glyphicons-225-chevron-left.png">
+    </a>
+
+
+    <a class="icon pull-right"
+        href="#/profil/{{user}}"> 
+        <img src="css/glyphicons/glyphicons-4-user.png"> 
+    </a>
+
+  
+  <h1 class="title">
+    {{shortTitle}}
+  </h1>
+
+</header>
+
+<div class="content">
+
+	<div class="content-padded">
+
+    	<div class="container-fluid">
+
+<!--
+    INFORMATIONS NON MODIFIABLES
+-->
+            <div class="card-todo" 
+                ng-hide="editing">
+                            
+                <div class="input-group">
+
+                    <div class="input-row-title">
+                        <label>Titre</label>
+                        <div class ="myDiv4">
+                            {{todo.title}}
+                        </div>
+                    </div>
+
+                    <div class="input-row-description">
+                        <label>Plus</label>
+                        <div class ="myDiv2">
+                            {{todo.description}}
+                        </div>
+                    </div>
+
+                    <div class="input-row-simple">
+                        <label>Catégorie</label>
+                        <div class ="myDiv">
+                            {{todo.category}}
+                        </div>
+                    </div>
+
+                    <div class="input-row-simple"
+                        ng-show="thereIsADeadline">
+                        <label>Deadline</label>
+                        <div class ="myDiv">
+                            {{millisecondsToString(todo.deadline)}}
+                        </div>
+                    </div>
+
+                    <div class="input-row-end">
+                        <label>Etat</label>
+                        <div class ="myDiv3">
+                            {{todo.state}}
+                        </div>
+                    </div>
+                        
+                </div>
+            
+            </div>
+
+<!--
+    INFORMATIONS MODIFIABLES
+-->
+            
+            <div class="card" 
+                ng-show="editing">
+                            
+                <div class="input-group">
+
+                    <div class="input-row-title">
+                        <label>Titre</label>
+                        <textarea ng-model="todoTitle" style="background-color:white">
+                        </textarea>
+                    </div>
+
+                    <div class="input-row-description">
+                        <label>Plus</label>
+                        <textarea ng-model="todoDescription" 
+                            placeholder="{{todo.description}}"
+                            style="background-color:white">
+                        </textarea>
+                    </div>
+
+                    <div class="input-row-simple">
+                        <label>Catégorie</label>
+                        <div class ="myDiv7">
+                                  <button class="btn"
+                                      ng-click="work()"
+                                      id="category-work">
+                                      TRAVAIL
+                                  </button>
+                                  <button class="btn"
+                                      ng-click="fun()"
+                                      id="category-fun">
+                                      LOISIR
+                                  </button>
+                                 <button class="btn"
+                                      ng-click="other()"
+                                      id="category-other">
+                                      AUTRE
+                                  </button>          
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="input-row-end"
+                        ng-show="thereIsADeadline">
+                        
+                        <label>Deadline</label>
+                        <div class ="myDiv5" 
+                            ng-model="todoDeadline">
+                            {{millisecondsToString(todo.deadline)}}
+                        </div>
+
+                    </div>
+
+                    <div class="input-row-end">
+                        <div class="action">
+                            
+                            <a class="btn" 
+                                ng-show="cancelBut" 
+                                ng-click="cancel()">
+                                Annuler
+                            </a>
+                            <a class="btn" 
+                                ng-show="deadlineBut" 
+                                ng-click="editOrCreateDeadline()">
+                                {{addOrEditTheDeadline}}
+                            </a>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+<!--
+    PARTIE GERANT LA DEADLINE
+-->
+
+                <div style="width:100%; background:#eee" 
+                    ng-show="editDeadline">
+                    
+                    <table style="width:100%;padding: 25px; margin: 0 auto; font-family:'Open Sans', 'Helvetica', 'Arial';">
+
+                        <tr align="center" 
+                            style="margin: 0; padding: 0;">
+                            
+                            <td>
+
+                                <table 
+                                    style="width:100%;border-style:solid; 
+                                    border-width:2px; border-color: #eee;" 
+                                    cellspacing="0">
+
+                                    <tr style="background-color: #eee;">
+                                    
+                                        <td style=" padding: 10px 15px 10px 15px; color: #eee;">
+                                            
+                                            <div class="pickdating" 
+                                                ng-controller="DatepickerDemoCtrl">
+                            
+                                                <input type="text" 
+                                                    placeholder="Selectionner une date"
+                                                    READONLY
+                                                    datepicker-popup="{{format}}" 
+                                                    ng-model="myVar.data"
+                                                    is-open="opened" 
+                                                    min-date="minDate" 
+                                                    datepicker-options="dateOptions"
+                                                    ng-required="true"
+                                                    ng-click="open($event)"
+                                                    close-text="Close" />
+
+                                            </div>
+                                        
+                                        </td>
+                                    
+                                    </tr>
+                                    
+                                    <tr style="background-color: #eee;">
+                                        
+                                        <td style=" padding: 10px 15px 10px 15px; color: #eee;">
+                                        
+                                            <div class="tpck">
+                                        
+                                                <timepicker ng-model="mytime"
+                                                    ng-change="changed()" hour-step="hstep" minute-step="mstep"
+                                                    show-meridian="ismeridian"/>
+                                        
+                                            </div>
+                                        
+                                        </td>
+                                    
+                                    </tr>
+                                
+                                </table>
+                            
+                            </td>
+                        
+                        </tr>
+                    
+                    </table>
+                
+                </div>
+
+            </div>
+
+<!--
+    ALERTES
+-->
+            <alert id="myalert" type="{{alertType}}" ng-show="alert">{{alertMsg}}</alert>
+
+<!--
+    BOUTONS D'ACTIONS
+-->
+
+            <button class="btn btn-primary btn-block"
+                ng-click="editATodo()"
+                ng-hide="editing">
+            
+                <span class="icon icon-compose"/>
+                Modifier
+            
+            </button>
+
+            <button class="btn btn-positive btn-block"
+                ng-click="validate()"
+                ng-show="editing">
+
+                <span class="icon icon-check"/>
+                Valider
+            
+            </button>
+            
+            <button class="btn btn-negative btn-block"
+                ng-click="deleteATodo()"
+                ng-show="deleteBut">
+            
+                <span class="icon icon-trash"/>
+                Supprimer
+            
+            </button>
+
+        </div>
+    
+    </div>
+
+</div>
+

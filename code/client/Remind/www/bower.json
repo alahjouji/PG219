@@ -1,0 +1,33 @@
+{
+  "name": "Remind",
+  "version": "1.0.0",
+  "authors": [
+    "ariche, alahjouji, smante"
+  ],
+  "description": "The best application for todo",
+  "main": "index.html",
+  "keywords": [
+    "todo",
+    "best",
+    "enseirb",
+    "PG219"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.14",
+    "ratchet": "~2.0.2",
+    "angular-route": "~1.3.14",
+    "jquery": "~2.1.3",
+    "angular-resource": "~1.3.14",
+    "angular-touch": "~1.3.14",
+    "angular-cookies": "~1.3.14"
+  }
+}
